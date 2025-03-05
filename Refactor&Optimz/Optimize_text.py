@@ -94,31 +94,19 @@ def process_and_format_code(java_code: str) -> str:
 
 # Example usage:
 input_code = """
+// SimpleCode3: Factorial calculation with inefficiencies
 import java.util.Scanner;
-
-public class ClassExample {
-public static void main(String[] args) {
-int n1 , n2;
-int unusedVar;
-Scanner scanner = new Scanner(System.in);
-
-System.out.print("Enter the limit: ");
-int val = scanner.nextInt();
-
-n1 = 0;
-n2 = 0;
-n1 = 0;
-n2 = 0;
-for (int i = 1; i <= val; i++) {
-if (i % 2 == 0) {
-n2 += i; 
-} else {
-n1 += i; 
-}
-}
-System.out.println("Sum of even numbers up to " + val + ": " + n2);
-System.out.println("Sum of odd numbers up to " + val + ": " + n1);
-scanner.close();
+class factorialcalc {
+public static void main(String args[]) {
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter a number:");
+int num=sc.nextInt();
+int fact=1;
+// Unoptimized loop
+for(int i=num;i>0;i--) fact*=i;
+System.out.println("Factorial: "+fact);
+// Dead Code
+if(false) { System.out.println("This code never runs"); }
 }
 }
 """
