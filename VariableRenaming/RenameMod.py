@@ -36,27 +36,26 @@ Return the updated code, and preserve the structure and indentation.
 
 # Example Java code (replace this with any Java snippet you want to test)
 java_code = """
-class something {
+public class PrimeNumbers {
     public static void main(String[] args) {
-        System.out.println("Factorial of 5: " + func1(5));
-        System.out.println("Concatenation of 'Hello' and 'World': " + func2("Hello", "World"));
-    }
-
-    public static int func1(int x) {
-        // x represents a number for which factorial is calculated
-        int result = 1;
-        for (int i = 1; i <= x; i++) {
-            result *= i;
+        int count = 0;
+        for (int num = 2; num <= 50; num++) {
+            boolean isPrime = true;
+            for (int i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            
+            if (isPrime) {
+                System.out.print(num + " ");
+                count++;
+            }
         }
-        return result;
-    }
-
-    public static String func2(String x, String y) {
-        // x and y represent two strings to concatenate
-        return x + " " + y;
+        System.out.println("\nTotal primes: " + count);
     }
 }
-
 """
 
 # Call the refactor function
@@ -65,3 +64,9 @@ refactored_code = refactor_java_code(java_code)
 # Print the updated code
 print("Refactored Java Code:\n")
 print(refactored_code)
+
+# Save the output to Rename.java
+with open("Renamed.java", "w", encoding="utf-8") as file:
+    file.write(refactored_code)
+
+print("\nRefactored code has been saved to Rename.java")
